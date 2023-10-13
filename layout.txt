@@ -1,0 +1,71 @@
+Components:
+
+Navbar:
+
+Purpose: Navigation bar for the application.
+Contents: Logo, links to Home, Reports, Profile, etc.
+Tech: React component for rendering, possibly using React Router for navigation.
+
+InjuryForm:
+
+Purpose: Form for users to report injuries.
+Contents: Input fields for reporter's name, injury date & time, body map selection, injury details, etc.
+Tech: React form components, state management (React Hooks), form validation.
+
+BodyMap:
+
+Purpose: Component for selecting areas of the body where injuries occurred.
+Contents: Interactive body map with clickable/selectable areas, possibly with numbered circles representing injuries.
+Tech: Canvas API for drawing the body map, event handling for user interactions.
+
+ReportList:
+
+Purpose: Component to display a list/table of injury reports.
+Contents: Table rows with injury report details (reporter name, injury date & time, etc.).
+Tech: React component for rendering, sorting and filtering logic.
+
+UserAuthentication:
+
+Purpose: Login and registration forms.
+Contents: Input fields for username, email, password, login/register buttons.
+Tech: React form components, authentication logic (Auth0 integration).
+
+AnalyticsDashboard:
+
+Purpose: Visualization of relevant metrics and injury patterns.
+Contents: Charts and graphs representing data trends.
+Tech: Chart.js, D3.js, or similar charting libraries.
+
+
+Pages:
+Home Page:
+
+Purpose: Landing page with brief information about the application.
+Contents: Welcome message, summary of the application's purpose.
+
+InjuryForm Page:
+
+Purpose: Page for users to report new injuries.
+Contents: InjuryForm component.
+
+ReportList Page:
+
+Purpose: Page to view a list of all reported injuries.
+Contents: ReportList component, search and filter options.
+
+UserProfile Page:
+
+Purpose: Page displaying user-specific information and history of reported injuries.
+Contents: User details, list of previously reported injuries by the user.
+Analytics Page (Bonus Feature):
+
+Purpose: Page displaying data visualizations and analytics.
+Contents: AnalyticsDashboard component with charts and graphs.
+Tech Stack for Components and Pages:
+React: For building reusable UI components and managing component states.
+React Router: For handling navigation between different pages.
+Auth0: For user authentication and authorization.
+Canvas API: For drawing interactive body maps.
+Chart.js or D3.js: For creating charts and graphs in the analytics dashboard.
+Prisma Client: For database queries and data manipulation.
+Remember, these are basic outlines, and the complexity of each component/page may vary based on your specific requirements. Make sure to modularize your components, keeping them focused on specific tasks for easier maintenance and scalability. If you have more detailed questions about a specific component or page, feel free to ask! 😊
