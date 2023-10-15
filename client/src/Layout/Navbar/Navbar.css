@@ -1,0 +1,30 @@
+.title img {
+  filter: hue-rotate(30deg);
+  height: 50px;
+}
+
+.title span {
+  font-weight: 700;
+  padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+/* Your existing styles */
+
+@media (max-width: 768px) {
+    .title span {
+      display: none;
+    }
+  }
+  

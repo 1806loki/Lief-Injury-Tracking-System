@@ -1,12 +1,20 @@
-import Homepage from "./pages/Homepage/Homepage"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App() {
+import Home from "./pages/Home/Home";
+import InjuryReport from "./pages/InjuryReport/InjuryReport";
+import Report from "./pages/Report/Report";
 
+const App = () => {
   return (
-    <>
-  <Homepage/>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/injury-report" element={<InjuryReport />} />
+        <Route path="/report-list" element={<Report />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
+

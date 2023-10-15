@@ -1,0 +1,24 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+}
+
+.hero {
+  background-color: #092a62;
+}
+@media screen and (min-width: 768px) {
+  .hero {
+    padding: 25px 25px;
+    width: 70%;margin-top: 20px;
+  }
+  .paragraph {
+    font-size: 1.5rem;
+  }
+
+  .cardSection{
+    margin-top: 10px;
+  }
+}

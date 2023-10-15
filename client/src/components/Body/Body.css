@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container svg {
+  height: 500px;
+  width: 100%;
+}
+
+.body_parts {
+  fill: red;
+  stroke: rgb(255, 128, 128);
+  stroke-opacity: 0;
+  transition: fill 0.3s ease;
+  cursor: pointer;
+}
+
+.body_parts:hover {
+  fill-opacity: 0.5;
+}
+
+.body_fill {
+  fill: red;
+  fill-opacity: 0.5;
+  stroke: rgb(255, 128, 128);
+  stroke-opacity: 0;
+  transition: fill 0.3s ease;
+}
