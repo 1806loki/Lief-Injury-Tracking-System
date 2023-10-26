@@ -1,19 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, Drawer, Button } from "antd";
 import { Layout } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import logo from "../../assets/Lief-logo.webp";
+import axios from "axios"
 
 const { Header } = Layout;
 
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-// ...
-
 <Menu
   mode="horizontal"
-  defaultSelectedKeys={["home"]}
   style={{
     lineHeight: "64px",
     display: "flex",
@@ -34,7 +32,7 @@ import { Link } from "react-router-dom";
       key: "reportList",
     },
     {
-      label: <Link to="/sign-in">Sign In</Link>,
+      label: <Link to="http://localhost:3000/auth/google">Sign In</Link>,
       key: "signIn",
     },
     {
@@ -43,8 +41,6 @@ import { Link } from "react-router-dom";
     },
   ]}
 />;
-
-// ...
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
@@ -57,6 +53,20 @@ const Navbar = () => {
     setVisible(false);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const API = "https://localhost:3000/auth/google/callback";
+
+      try {
+        const response = await axios.get(API);
+         console.log(response.data);
+      } catch (err) {
+        console.error("Error", err);
+      }
+    };
+    fetchData();
+  },[]);
+
   return (
     <Header
       style={{
@@ -65,9 +75,14 @@ const Navbar = () => {
         justifyContent: "space-between",
       }}
     >
-      {/* Menu Button for Small Screens */}
       <div className="mobile-menu">
-        <Button type="primary" onClick={showDrawer}>
+        <Button
+          type="primary"
+          onClick={showDrawer}
+          style={{
+            width: "auto",
+          }}
+        >
           Menu
         </Button>
         <Drawer
@@ -93,7 +108,9 @@ const Navbar = () => {
                 key: "reportList",
               },
               {
-                label: <Link to="/sign-in">Sign In</Link>,
+                label: (
+                  <Link to="http://localhost:3000/auth/google">Sign In</Link>
+                ),
                 key: "signIn",
               },
               {
@@ -105,7 +122,6 @@ const Navbar = () => {
         </Drawer>
       </div>
 
-      {/* Logo and Title */}
       <div className="title" style={{ display: "flex", alignItems: "center" }}>
         <div>
           <img src={logo} alt="" className="logo" />
@@ -115,7 +131,6 @@ const Navbar = () => {
         </span>
       </div>
 
-      {/* Menu for Medium and Large Screens */}
       <div className="desktop-menu">
         <Menu
           mode="horizontal"
@@ -140,7 +155,9 @@ const Navbar = () => {
               key: "reportList",
             },
             {
-              label: "Sign In",
+              label: (
+                <Link to="http://localhost:3000/auth/google">Sign In</Link>
+              ),
               key: "signIn",
             },
             {

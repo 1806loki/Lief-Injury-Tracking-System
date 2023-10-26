@@ -8,6 +8,7 @@ import "./Home.css";
 const { Title, Paragraph } = Typography;
 
 const Home = () => {
+
   return (
     <div>
       <Navbar />

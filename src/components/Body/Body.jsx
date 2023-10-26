@@ -1,13 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import { useState } from "react";
 
-
 import male_front from "../../assets/male-front.png";
 import male_back from "../../assets/male-back.png";
 
 import "./Body.css";
 
-const Body = () => {
+const Body = ({ onBodyPartSelect }) => {
   const [color, setColor] = useState({
     Head: false,
     neck: false,
@@ -17,7 +16,7 @@ const Body = () => {
     Rt_Shoulder: false,
     Lt_Shoulder: false,
     Rt_Arm: false,
-    lt_arm: false,
+    Lt_arm: false,
     Rt_Elbow: false,
     Lt_Elbow: false,
     Rt_Forearm: false,
@@ -25,7 +24,7 @@ const Body = () => {
     Rt_Wrist: false,
     Lt_Wrist: false,
     Rt_Hand: false,
-    lt_hand: false,
+    Lt_hand: false,
     Rt_Thigh: false,
     Lt_Thigh: false,
     Rt_Knee: false,
@@ -87,16 +86,11 @@ const Body = () => {
       );
     }
   };
-
+  onBodyPartSelect(selectedBodyParts);
   return (
-    <div className="injury-report">
-      <h1>Injury Report</h1>
-      <h2>Selected Body parts</h2>
-      <ul>
-        {selectedBodyParts.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+    <div className="body-report">
+      <h2 style={{ textAlign: "center" , fontSize : "20px"}}>Select The Injured parts</h2>
+
       <div className="container">
         <div className={`front ${toggle ? "Bodyhide" : ""}`}>
           <svg
@@ -194,14 +188,14 @@ const Body = () => {
               onClick={() => toggleBodyPartVisibility("Rt_Arm")}
             ></path>
             <path
-              className={`body_parts ${color.lt_arm ? "body_fill" : ""}`}
-              id="lt_arm"
+              className={`body_parts ${color.Lt_arm ? "body_fill" : ""}`}
+              id="Lt_arm"
               stroke="#ff8080"
               vectorEffect="non-scaling-stroke"
               d="M587.573,444.669c14.284-5.985,25.869-14.57,23.177-33.919c-1.625-11.25-17.875-51.25-22-57.25c-2.265-3.294-4.53-6.027-5.655-11.06C570.522,324.211,538,324.001,524.5,294c1.167,12.001,2.178,85.65,1.506,98.992c0.108,0.098,20.827,42.675,23.494,48.175C558.012,454.281,574.009,450.353,587.573,444.669z"
               fillOpacity="0"
               strokeOpacity="1"
-              onClick={() => toggleBodyPartVisibility("lt_arm")}
+              onClick={() => toggleBodyPartVisibility("Lt_arm")}
             ></path>
             <path
               className={`body_parts ${color.Rt_Elbow ? "body_fill" : ""}`}
@@ -275,13 +269,13 @@ const Body = () => {
             ></path>
             <path
               className={`body_parts ${color.lt_hand ? "body_fill" : ""}`}
-              id="lt_hand"
+              id="Lt_hand"
               stroke="#ff8080"
               vectorEffect="non-scaling-stroke"
               d="M740.25,640.25c-2.75-3.75-17.5-11.5-21.75-14.5c-2.125-1.5-7.938-4.375-14.281-7.375c-6.344-3-13.219-6.125-17.469-8.125c-8.417-0.584-30,7.584-44.875,19.5c1,1.75-0.875,7.125,0.125,16.25s4.125,23.25,6.375,32.125s7,18.375,8.5,22.875s9.403,29.364,12.625,32c2.75,2.25,7.5,0.75,8.25-2.75s-1.625-10.875-2.5-14.125s-5.625-19.25-6.5-21.75s-2-5.125-0.25-5.125s2.125,2.75,3.25,5.625s5.875,19.5,6.875,24.125s4.5,17,6.25,21.75s5,10,9,9.75s4.875-4.75,5.125-8.375s-5.875-23.5-6.375-27.625s-5.375-19.25-6.125-21.25s-1.375-5,0.625-5.125s2.875,5.625,3.75,8.625s9.75,31.875,10.25,35.5s2.625,14.5,6,17.75c2.744,2.643,5.625,3.875,8.625,0.875s2.25-10,0.875-15.25s-4.625-21.125-5.5-25s-6.375-20.875-7.25-24s-2.125-5.375-1.125-5.75s2.25,1.125,3.5,5.25s6.625,20.5,8.375,25.5s1.5,11.625,4.125,17.375s7,7.625,10.625,7.125s4.277-7.391,4.375-10.125c0.098-2.734-4.75-20.5-6.25-27.375s-5.25-16.625-6.5-23s-7.375-23.375-8.625-26s-0.625-4.75,2.5-3.875s9.25,2.625,13,7.625s10.875,6.75,13.375,7s8.5,0.375,9.25-6.375S743,644,740.25,640.25z"
               fillOpacity="0"
               strokeOpacity="1"
-              onClick={() => toggleBodyPartVisibility("lt_hand")}
+              onClick={() => toggleBodyPartVisibility("Lt_hand")}
             ></path>
             <path
               className={`body_parts ${color.Rt_Thigh ? "body_fill" : ""}`}

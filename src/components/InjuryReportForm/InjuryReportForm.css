@@ -1,3 +1,57 @@
 .injuryReportForm {
-  background-color: #f0f0f0;
+  max-width: 800px; /* Adjust the width as per your preference */
+  margin: 0 auto; /* Center the form on the page */
+  padding: 20px;
+  text-align: left; /* Align text inside the form to the left */
+  
+
+   }
+
+/* Style Form Items */
+.ant-form-item-label {
+  text-align: left; /* Align labels to the left */
+}
+
+/* Style Input and Select Components */
+.ant-input,
+.ant-select {
+  width: 100%; /* Make input and select components fill the width */
+  margin-bottom: 15px; /* Add some space between input/select and other elements */
+}
+
+.bodyContainer{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.divLeft{
+   text-align: center;
+}
+.divLeft,
+.divRight {
+  
+  width: 80%; /* Adjust the width as per your preference */
+     margin: 0 auto;
+}
+
+/* Style List Items */
+ol {
+   padding: 0;
+}
+
+ol li {
+  margin-bottom: 5px;
+  font-size: large;
+}
+
+
+.bottom{
+  display: flex;justify-content: center;
+}
+
+button {
+  width: 50%;
+  margin: 100px auto;
+  display: block;  
 }
