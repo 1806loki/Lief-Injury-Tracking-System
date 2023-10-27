@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import male_front from "../../assets/male-front.png";
 import male_back from "../../assets/male-back.png";
@@ -64,6 +65,9 @@ const Body = ({ onBodyPartSelect }) => {
 
   const [selectedBodyParts, setSelectedBodyParts] = useState([]);
   const [toggle, setToggle] = useState(false);
+  useEffect(() => {
+    onBodyPartSelect(selectedBodyParts);
+  }, [selectedBodyParts]);
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -86,10 +90,12 @@ const Body = ({ onBodyPartSelect }) => {
       );
     }
   };
-  onBodyPartSelect(selectedBodyParts);
+  
   return (
     <div className="body-report">
-      <h2 style={{ textAlign: "center" , fontSize : "20px"}}>Select The Injured parts</h2>
+      <h2 style={{ textAlign: "center", fontSize: "20px" }}>
+        Select The Injured parts
+      </h2>
 
       <div className="container">
         <div className={`front ${toggle ? "Bodyhide" : ""}`}>
@@ -268,7 +274,7 @@ const Body = ({ onBodyPartSelect }) => {
               onClick={() => toggleBodyPartVisibility("Rt_Hand")}
             ></path>
             <path
-              className={`body_parts ${color.lt_hand ? "body_fill" : ""}`}
+              className={`body_parts ${color.Lt_hand ? "body_fill" : ""}`}
               id="Lt_hand"
               stroke="#ff8080"
               vectorEffect="non-scaling-stroke"

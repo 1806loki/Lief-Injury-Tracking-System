@@ -53,26 +53,16 @@ const Navbar = () => {
     setVisible(false);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const API = "https://localhost:3000/auth/google/callback";
-
-      try {
-        const response = await axios.get(API);
-         console.log(response.data);
-      } catch (err) {
-        console.error("Error", err);
-      }
-    };
-    fetchData();
-  },[]);
+   
 
   return (
     <Header
       style={{
         background: "#092a62",
         display: "flex",
+        width:"auto",
         justifyContent: "space-between",
+         
       }}
     >
       <div className="mobile-menu">
