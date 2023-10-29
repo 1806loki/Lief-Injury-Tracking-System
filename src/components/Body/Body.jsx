@@ -90,7 +90,7 @@ const Body = ({ onBodyPartSelect }) => {
       );
     }
   };
-  
+
   return (
     <div className="body-report">
       <h2 style={{ textAlign: "center", fontSize: "20px" }}>
@@ -753,10 +753,16 @@ const Body = ({ onBodyPartSelect }) => {
               vectorEffect="non-scaling-stroke"
               d="M779,1329H599v-270h180V1329z"
               onClick={handleToggle}
-            ></path>
+            >
+              <title>This is a blue triangle</title>
+            </path>
           </svg>{" "}
         </div>
       </div>
+
+      <p style={{ textAlign: "center", fontSize: "10px" }}>
+        {!toggle ? "Click on the little Guy to see BackView" : "Click on the little Guy to see FrontView"  }
+      </p>
     </div>
   );
 };

@@ -1,173 +1,102 @@
-import { useEffect, useState } from "react";
-import { Menu, Drawer, Button } from "antd";
-import { Layout } from "antd";
-import { UserOutlined } from "@ant-design/icons";
-import logo from "../../assets/Lief-logo.webp";
-import axios from "axios"
+import { NavLink } from "react-router-dom";
+import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
+import { TbReportMedical } from "react-icons/tb";
+import { CiViewList } from "react-icons/ci";
+import { TbDeviceAnalytics } from "react-icons/tb";
+import { GiHamburgerMenu } from "react-icons/gi";
 
-const { Header } = Layout;
+import { useState } from "react";
 
 import "./Navbar.css";
-import { Link } from "react-router-dom";
-
-<Menu
-  mode="horizontal"
-  style={{
-    lineHeight: "64px",
-    display: "flex",
-    background: "#092a62",
-    color: "white",
-  }}
-  items={[
-    {
-      label: <Link to="/">Home</Link>,
-      key: "home",
-    },
-    {
-      label: <Link to="/injury-report">Injury Report</Link>,
-      key: "injuryReport",
-    },
-    {
-      label: <Link to="/report-list">Report List</Link>,
-      key: "reportList",
-    },
-    {
-      label: <Link to="http://localhost:3000/auth/google">Sign In</Link>,
-      key: "signIn",
-    },
-    {
-      label: <Link to="/login">Login</Link>,
-      key: "login",
-    },
-  ]}
-/>;
 
 const Navbar = () => {
-  const [visible, setVisible] = useState(false);
-
-  const showDrawer = () => {
-    setVisible(true);
+  const [toggle, setToggle] = useState(false);
+  const handleToggle = () => {
+    setToggle(!toggle);
   };
 
-  const onClose = () => {
-    setVisible(false);
+  const closeSidebar = () => {
+    setToggle(false);
   };
-
-   
-
   return (
-    <Header
-      style={{
-        background: "#092a62",
-        display: "flex",
-        width:"auto",
-        justifyContent: "space-between",
-         
-      }}
-    >
-      <div className="mobile-menu">
-        <Button
-          type="primary"
-          onClick={showDrawer}
-          style={{
-            width: "auto",
-          }}
-        >
-          Menu
-        </Button>
-        <Drawer
-          title="Menu"
-          placement="left"
-          closable={false}
-          onClose={onClose}
-          open={visible}
-        >
-          <Menu
-            mode="vertical"
-            items={[
-              {
-                label: <Link to="/">Home</Link>,
-                key: "home",
-              },
-              {
-                label: <Link to="/injury-report">Injury Report</Link>,
-                key: "injuryReport",
-              },
-              {
-                label: <Link to="/report-list">Report List</Link>,
-                key: "reportList",
-              },
-              {
-                label: (
-                  <Link to="http://localhost:3000/auth/google">Sign In</Link>
-                ),
-                key: "signIn",
-              },
-              {
-                label: <Link to="/login">Login</Link>,
-                key: "login",
-              },
-            ]}
-          />
-        </Drawer>
+    <nav className={`navbar-container ${toggle ? "sidebar-open" : ""}`}>
+      <NavLink to="/" className="navbar-header">
+        <h2>InjuryLogix</h2>
+      </NavLink>
+      <div className="menu">
+        <NavLink to="/" className="menuList">
+          <AiOutlineHome />
+          Home
+        </NavLink>
+        <NavLink to="/injury-report" className="menuList">
+          <TbReportMedical />
+          Injury Report
+        </NavLink>
+        <NavLink to="/report-list" className="menuList">
+          <CiViewList />
+          Report List
+        </NavLink>
+        <NavLink to="/dashboard" className="menuList">
+          <TbDeviceAnalytics />
+          Dashboard
+        </NavLink>
       </div>
-
-      <div className="title" style={{ display: "flex", alignItems: "center" }}>
-        <div>
-          <img src={logo} alt="" className="logo" />
+      <button onClick={handleToggle} className="mobile">
+        {<GiHamburgerMenu />}
+      </button>
+      <div className="user-container">
+        <button className="authButton">Login</button>
+        <button className="authButton">SignUp</button>
+        <div className="userInfo">
+          <AiOutlineUser className="photo-icon" />
+          <span>Lokesh thalathoti</span>
         </div>
-        <span style={{ fontSize: "20px", color: "#ffffff" }}>
-          Injury Tracker
-        </span>
       </div>
-
-      <div className="desktop-menu">
-        <Menu
-          mode="horizontal"
-          defaultSelectedKeys={["home"]}
-          style={{
-            lineHeight: "64px",
-            display: "flex",
-            background: "#092a62",
-            color: "white",
-          }}
-          items={[
-            {
-              label: <Link to="/">Home</Link>,
-              key: "home",
-            },
-            {
-              label: <Link to="/injury-report">Injury Report</Link>,
-              key: "injuryReport",
-            },
-            {
-              label: <Link to="/report-list">Report List</Link>,
-              key: "reportList",
-            },
-            {
-              label: (
-                <Link to="http://localhost:3000/auth/google">Sign In</Link>
-              ),
-              key: "signIn",
-            },
-            {
-              label: "Login",
-              key: "login",
-            },
-          ]}
-        />
-      </div>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <UserOutlined
-          style={{
-            fontSize: "24px",
-            marginLeft: "10px",
-            cursor: "pointer",
-            color: "#1890ff",
-          }}
-        />
-      </div>
-    </Header>
+      {toggle && (
+        <div className="mobile">
+          <div className="mobileView">
+            <NavLink to="/" className="mobile-header" onClick={closeSidebar}>
+              <h2>InjuryLogix</h2>
+            </NavLink>
+            <div className="mobile-menu">
+              <NavLink
+                to="/"
+                className="mobile-menuList"
+                onClick={closeSidebar}
+              >
+                <AiOutlineHome />
+                Home
+              </NavLink>
+              <NavLink
+                to="/injury-report"
+                className="mobile-menuList"
+                onClick={closeSidebar}
+              >
+                <TbReportMedical />
+                Injury Report
+              </NavLink>
+              <NavLink
+                to="/report-list"
+                className="mobile-menuList"
+                onClick={closeSidebar}
+              >
+                <CiViewList />
+                Report List
+              </NavLink>
+              <NavLink
+                to="/dashboard"
+                className="mobile-menuList"
+                onClick={closeSidebar}
+              >
+                <TbDeviceAnalytics />
+                Dashboard
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 };
 

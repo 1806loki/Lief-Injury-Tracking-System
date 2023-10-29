@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-evenly;
   color: white;
+  width: 100vw;
 }
 
 .hero {

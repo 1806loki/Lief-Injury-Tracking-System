@@ -8,7 +8,6 @@ import "./Home.css";
 const { Title, Paragraph } = Typography;
 
 const Home = () => {
-
   return (
     <div>
       <Navbar />
@@ -23,14 +22,14 @@ const Home = () => {
           >
             <Col xs={24} sm={20} md={18} lg={16} xl={32}>
               <Title level={2} style={{ color: "white" }}>
-                Welcome to Injury Tracker
+                Welcome to InjuryLogix
               </Title>
               <Paragraph className="paragraph" style={{ color: "white" }}>
-                Welcome to Injury Tracker, your reliable partner in injury
-                tracking and reporting. Our innovative system is designed to
-                simplify the process of recording injuries while ensuring the
-                well-being of individuals within your organization. With Injury
-                Tracker, safety is just a click away.
+                Welcome to InjuryLogix, your reliable partner in injury tracking
+                and reporting. Our innovative system is designed to simplify the
+                process of recording injuries while ensuring the well-being of
+                individuals within your organization. With Injury njuryLogix,
+                safety is just a click away.
               </Paragraph>
             </Col>
           </Row>
@@ -50,7 +49,7 @@ const Home = () => {
             </Col>
             <Col xs={24} sm={20} md={18} lg={8} xl={6}>
               <Card title="Data Security">
-                Your data's safety is our priority. SafeGuard Tracker employs
+                Your data's safety is our priority. SafenjuryLogix employs
                 robust security measures to protect sensitive information,
                 giving you peace of mind.
               </Card>
@@ -66,8 +65,8 @@ const Home = () => {
               <Paragraph>
                 Join us in enhancing safety standards and simplifying injury
                 reporting. Whether you're part of law enforcement, healthcare,
-                or any safety-focused organization, Injury Tracker is tailored
-                to your needs.
+                or any safety-focused organization, InjuryLogix is tailored to
+                your needs.
               </Paragraph>
             </Col>
           </Row>

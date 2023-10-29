@@ -81,7 +81,7 @@ const InjuryFormReport = () => {
       >
         <h1>Injury Form</h1>
         <Form.Item
-          label="Reporter"
+          label="Reporter Name"
           name="reporter"
           rules={[{ required: true, message: "Please enter reporter name" }]}
         >
