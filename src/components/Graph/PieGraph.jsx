@@ -25,15 +25,7 @@ const PieChart = () => {
   const options = {
     maintainAspectRatio: false, // Set to false to disable aspect ratio
     responsive: true, // Set to true to enable responsiveness
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
+     
   };
 
   return (
