@@ -5,10 +5,6 @@ import { useGraphContext } from "../../context/GraphContextProvider";
 const PieChart = () => {
   const { categoryCounts } = useGraphContext();
 
-  if (!categoryCounts) {
-    return <div>Loading...</div>;
-  }
-
   const data = {
     labels: Object.keys(categoryCounts),
     datasets: [
@@ -42,6 +38,14 @@ const PieChart = () => {
 
   return (
     <div style={{ height: "500px", width: "500px", textAlign: "center" }}>
+      {categoryCounts ? (
+        <div>
+          <Pie data={data} options={options} />
+          <h1>Pie Injured Parts</h1>{" "}
+        </div>
+      ) : (
+        <div>Loadingg.......</div>
+      )}
       <Pie data={data} options={options} />
       <h1>Pie Injured Parts</h1>
     </div>
