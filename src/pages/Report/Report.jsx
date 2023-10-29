@@ -1,8 +1,9 @@
-import   { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Table, DatePicker, Input, Button } from "antd";
 import axios from "axios";
 import "./Report.css";
 import Navbar from "../../Layout/Navbar/Navbar";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 
 const Report = () => {
   const [reportData, setReportData] = useState([]);
@@ -29,12 +30,19 @@ const Report = () => {
       key: "reporter",
       sorter: (a, b) => a.reporter.localeCompare(b.reporter),
       // Filter dropdown to search by names
-      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+      filterDropdown: ({
+        setSelectedKeys,
+        selectedKeys,
+        confirm,
+        clearFilters,
+      }) => (
         <div style={{ padding: 8 }}>
           <Input
             placeholder="Search Reporter"
             value={selectedKeys[0]}
-            onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+            onChange={(e) =>
+              setSelectedKeys(e.target.value ? [e.target.value] : [])
+            }
             style={{ marginBottom: 8, display: "block" }}
           />
           <Button
@@ -74,8 +82,13 @@ const Report = () => {
         return `${day}-${month}-${year}`;
       },
       // Filter dropdown to filter by dates
-      // eslint-disable-next-line no-unused-vars
-      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+      filterDropdown: ({
+        setSelectedKeys,
+        // eslint-disable-next-line no-unused-vars
+        selectedKeys,
+        confirm,
+        clearFilters,
+      }) => (
         <div style={{ padding: 8 }}>
           <DatePicker
             style={{ marginBottom: 8, display: "block" }}
@@ -135,24 +148,72 @@ const Report = () => {
       dataIndex: "details",
       key: "details",
     },
+    {
+      title: "Action",
+      key: "action",
+      render: (text, record) => (
+        <span>
+          <Button
+            onClick={() => handleEdit(record.key)}
+            type="primary"
+            size="small"
+          >
+            <AiOutlineEdit />
+            Edit
+          </Button>{" "}
+          <Button
+            onClick={() => handleDelete(record.key)}
+            type="primary"
+            size="small"
+            danger
+          >
+            <AiOutlineDelete />
+            Delete
+          </Button>
+        </span>
+      ),
+    },
   ];
+  const handleEdit = (key) => {
+    console.log(`Editing report with key: ${key}`);
+  };
+
+  const handleDelete = async (key) => {
+    const API = `http://localhost:3000/api/injuryReport/${key}`;
+
+    try {
+      await axios.delete(API);
+      console.log("Report Deleted");
+    } catch (err) {
+      console.log(`Error : ${err}`);
+    }
+
+    console.log(`Deleting report with key: ${key}`);
+  };
 
   return (
     <div className="report">
       <Navbar />
       <h1>List of Reports</h1>
-      <Table className="table"
-        dataSource={reportData.map((item) => ({
-          key: item._id,
-          reporter: item.reporter,
-          dateOfIncident: item.dateOfIncident,
-          timeOfIncident: item.timeOfIncident,
-          reportedDate: item.reportedDate,
-          injuredParts: item.injuredParts.join(", "),
-          details: Object.entries(item.details)
-            .map(([key, value]) => `${key}: ${value}`)
-            .join(", "),
-        }))}
+      <Table
+        className="table"
+        dataSource={
+          reportData
+            ? reportData.map((item) => ({
+                key: item._id,
+                reporter: item.reporter,
+                dateOfIncident: item.dateOfIncident,
+                timeOfIncident: item.timeOfIncident,
+                reportedDate: item.reportedDate,
+                injuredParts: item.injuredParts.join(", "),
+                details: item.details
+                  ? Object.entries(item.details)
+                      .map(([key, value]) => `${key}: ${value}`)
+                      .join(", ")
+                  : "No Details Available",
+              }))
+            : []
+        }
         columns={columns}
       />
     </div>

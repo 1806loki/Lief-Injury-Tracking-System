@@ -19,6 +19,10 @@ const Navbar = () => {
   const closeSidebar = () => {
     setToggle(false);
   };
+
+  const handleAuth = () => {
+    
+  }
   return (
     <nav className={`navbar-container ${toggle ? "sidebar-open" : ""}`}>
       <NavLink to="/" className="navbar-header">
@@ -46,7 +50,7 @@ const Navbar = () => {
         {<GiHamburgerMenu />}
       </button>
       <div className="user-container">
-        <button className="authButton">Login</button>
+        <button className="authButton" onClick={handleAuth}>Login</button>
         <button className="authButton">SignUp</button>
         <div className="userInfo">
           <AiOutlineUser className="photo-icon" />

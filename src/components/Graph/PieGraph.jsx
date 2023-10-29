@@ -1,6 +1,6 @@
 import { Pie } from "react-chartjs-2";
 import "chart.js/auto";
-import { useGraphContext } from "../../context/GraphContextProvider";
+import { useGraphContext } from "../../../context/GraphContextProvider";
 
 const PieChart = () => {
   const { categoryCounts } = useGraphContext();
@@ -25,21 +25,21 @@ const PieChart = () => {
   const options = {
     maintainAspectRatio: false, // Set to false to disable aspect ratio
     responsive: true, // Set to true to enable responsiveness
-     
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
   };
 
   return (
     <div style={{ height: "500px", width: "500px", textAlign: "center" }}>
-      {categoryCounts ? (
-        <div>
-          <Pie data={data} options={options} />
-          <h1>Pie Injured Parts</h1>{" "}
-        </div>
-      ) : (
-        <div>Loadingg.......</div>
-      )}
       <Pie data={data} options={options} />
-      <h1>Pie Injured Parts</h1>
+      <h1>Pie Chart of Injured Parts</h1>
     </div>
   );
 };

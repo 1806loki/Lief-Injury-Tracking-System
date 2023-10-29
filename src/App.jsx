@@ -4,7 +4,8 @@ import Home from "./pages/Home/Home";
 import InjuryReport from "./pages/InjuryReport/InjuryReport";
 import Report from "./pages/Report/Report";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import GraphContextProvider from "./context/GraphContextProvider";
+import GraphContextProvider from "../context/GraphContextProvider";
+
 const App = () => {
   return (
     <GraphContextProvider>
