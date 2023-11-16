@@ -1,6 +1,6 @@
 import { Pie } from "react-chartjs-2";
 import "chart.js/auto";
-import { useGraphContext } from "../../../context/GraphContextProvider";
+import { useGraphContext } from "../../context/GraphContextProvider";
 
 const PieChart = () => {
   const { categoryCounts } = useGraphContext();

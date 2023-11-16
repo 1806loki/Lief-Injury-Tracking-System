@@ -7,7 +7,7 @@ import male_back from "../../assets/male-back.png";
 
 import "./Body.css";
 
-const Body = ({ onBodyPartSelect }) => {
+const Body = ({ onBodyPartSelect, reset   }) => {
   const [color, setColor] = useState({
     Head: false,
     neck: false,
@@ -67,7 +67,7 @@ const Body = ({ onBodyPartSelect }) => {
   const [toggle, setToggle] = useState(false);
   useEffect(() => {
     onBodyPartSelect(selectedBodyParts);
-  }, [selectedBodyParts]);
+  }, [selectedBodyParts, onBodyPartSelect]);
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -90,6 +90,12 @@ const Body = ({ onBodyPartSelect }) => {
       );
     }
   };
+  
+  useEffect(() => {
+    if (reset) {
+      setSelectedBodyParts([]);
+    }
+  }, [reset]);
 
   return (
     <div className="body-report">
@@ -761,7 +767,9 @@ const Body = ({ onBodyPartSelect }) => {
       </div>
 
       <p style={{ textAlign: "center", fontSize: "10px" }}>
-        {!toggle ? "Click on the little Guy to see BackView" : "Click on the little Guy to see FrontView"  }
+        {!toggle
+          ? "Click on the little Guy to see BackView"
+          : "Click on the little Guy to see FrontView"}
       </p>
     </div>
   );

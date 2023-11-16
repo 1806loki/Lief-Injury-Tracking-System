@@ -30,10 +30,7 @@ const GraphContextProvider = ({ children }) => {
   }, []);
 
   const categorizeInjuredParts = (incidents) => {
-    // Your categorization logic here...
-    // ...
-
-    // Sample categorization logic:
+     
     const categories = {
       Head: ["Head", "Bck_Head", "neck"],
       Chest: ["chest"],
@@ -90,7 +87,7 @@ const GraphContextProvider = ({ children }) => {
         "Left_Foot",
       ],
       Abdomen: ["Abdomen"],
-      Pelvis: ["pelvis"],
+      Pelvis: ["pelvis","Buttocks"],
     };
 
     const counts = {};

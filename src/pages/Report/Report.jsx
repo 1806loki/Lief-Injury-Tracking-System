@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Table, DatePicker, Input, Button } from "antd";
+import { Popconfirm } from "antd";
+
 import axios from "axios";
 import "./Report.css";
 import Navbar from "../../Layout/Navbar/Navbar";
@@ -22,6 +24,25 @@ const Report = () => {
     };
     fetchData();
   }, []);
+
+  const handleEdit = (key) => {
+    console.log(`Editing report with key: ${key}`);
+    
+  };
+  
+  const handleDelete = async (key) => {
+    const API = `http://localhost:3000/api/injuryReport/${key}`;
+    
+    try {
+      await axios.delete(API);
+      console.log("Report Deleted");
+      window.location.reload();
+    } catch (err) {
+      console.log(`Error : ${err}`);
+    }
+
+    console.log(`Deleting report with key: ${key}`);
+  };
 
   const columns = [
     {
@@ -132,11 +153,6 @@ const Report = () => {
       dataIndex: "reportedDate",
       key: "reportedDate",
       sorter: (a, b) => new Date(a.reportedDate) - new Date(b.reportedDate),
-      render: (text) => {
-        const formattedDate = new Date(text).toLocaleDateString();
-        const [month, day, year] = formattedDate.split("/");
-        return `${day}-${month}-${year}`;
-      },
     },
     {
       title: "Injured Parts",
@@ -154,6 +170,9 @@ const Report = () => {
       render: (text, record) => (
         <span>
           <Button
+            style={{
+              width: "80px",
+            }}
             onClick={() => handleEdit(record.key)}
             type="primary"
             size="small"
@@ -161,35 +180,29 @@ const Report = () => {
             <AiOutlineEdit />
             Edit
           </Button>{" "}
-          <Button
-            onClick={() => handleDelete(record.key)}
-            type="primary"
-            size="small"
-            danger
+          <Popconfirm
+            title="Delete the Report"
+            description="Are you sure to delete this Report?"
+            okText="Yes"
+            cancelText="No"
+            onConfirm={() => handleDelete(record.key)}
           >
-            <AiOutlineDelete />
-            Delete
-          </Button>
+            <Button
+              style={{
+                width: "80px",
+              }}
+              type="primary"
+              size="small"
+              danger
+            >
+              <AiOutlineDelete />
+              Delete
+            </Button>
+          </Popconfirm>
         </span>
       ),
     },
   ];
-  const handleEdit = (key) => {
-    console.log(`Editing report with key: ${key}`);
-  };
-
-  const handleDelete = async (key) => {
-    const API = `http://localhost:3000/api/injuryReport/${key}`;
-
-    try {
-      await axios.delete(API);
-      console.log("Report Deleted");
-    } catch (err) {
-      console.log(`Error : ${err}`);
-    }
-
-    console.log(`Deleting report with key: ${key}`);
-  };
 
   return (
     <div className="report">

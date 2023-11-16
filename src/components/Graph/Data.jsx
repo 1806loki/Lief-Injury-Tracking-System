@@ -79,7 +79,7 @@ const Data = () => {
           "Left_Foot",
         ],
         Abdomen: ["Abdomen"],
-        Pelvis: ["pelvis"],
+        Pelvis: ["pelvis","Buttocks"],
       };
 
       incidents.map((incident) => {

@@ -65,13 +65,23 @@ button {
   cursor: pointer;
 }
 button:hover {
+}
+
+.authButton {
+  border: none;
+  color: grey;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.authButton:hover {
   background: #427ee5;
   border-radius: 10%;
   color: white;
-}
-
-.authLink {
-  text-decoration: none;
 }
 
 .menuList:hover {
@@ -155,7 +165,7 @@ button:hover {
   }
   .mobile-menuList:hover {
     color: blue;
-    border-bottom: 0px; /* Set the border bottom color for hover state */
+    border-bottom: 0px;
   }
   .mobile-menuList.active {
     border-bottom: 0px;

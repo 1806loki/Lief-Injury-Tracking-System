@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { TbReportMedical } from "react-icons/tb";
@@ -6,7 +6,7 @@ import { CiViewList } from "react-icons/ci";
 import { TbDeviceAnalytics } from "react-icons/tb";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-import { useState } from "react";
+ import { useState } from "react";
 
 import "./Navbar.css";
 
@@ -20,9 +20,6 @@ const Navbar = () => {
     setToggle(false);
   };
 
-  const handleAuth = () => {
-    
-  }
   return (
     <nav className={`navbar-container ${toggle ? "sidebar-open" : ""}`}>
       <NavLink to="/" className="navbar-header">
@@ -50,8 +47,13 @@ const Navbar = () => {
         {<GiHamburgerMenu />}
       </button>
       <div className="user-container">
-        <button className="authButton" onClick={handleAuth}>Login</button>
-        <button className="authButton">SignUp</button>
+        <Link to="http://localhost:3000/auth/google" className="authButton">
+          <button>Login</button>
+        </Link>
+        <Link className="authButton">
+          <button>Signup</button>
+        </Link>
+
         <div className="userInfo">
           <AiOutlineUser className="photo-icon" />
           <span>Lokesh thalathoti</span>

@@ -1,4 +1,4 @@
-import { useGraphContext } from "../../../context/GraphContextProvider";
+import { useGraphContext } from "../../context/GraphContextProvider";
 import Navbar from "../../Layout/Navbar/Navbar";
 import PieChart from "../../components/Graph/PieGraph";
 import "./Dashboard.css";
@@ -13,8 +13,10 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <Navbar />
-      <div className="graphs">
-        <PieChart className="div1" />
+      <div className="dashboard-container">
+        <div className="graphs">
+          <PieChart className="div1" />
+        </div>
       </div>
     </div>
   );

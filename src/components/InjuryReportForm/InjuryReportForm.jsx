@@ -7,6 +7,7 @@ import axios from "axios";
 const InjuryFormReport = () => {
   const [injuryParts, setInjuryParts] = useState([]);
   const [inputValues, setInputValues] = useState({});
+
   const [form] = Form.useForm();
 
   const handleSelectedBodyParts = (selectedParts) => {
@@ -37,7 +38,7 @@ const InjuryFormReport = () => {
       .toString()
       .padStart(2, "0")}-${(currentDate.getMonth() + 1)
       .toString()
-      .padStart(2, "0")}--${currentDate.getFullYear()}`;
+      .padStart(2, "0")}-${currentDate.getFullYear()}`;
     form.setFieldsValue({
       reportedDate: formattedDate,
     });

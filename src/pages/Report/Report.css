@@ -1,12 +1,21 @@
 .report {
   height: auto;
- }
+}
 
 .report h1 {
   text-align: center;
   padding-top: 10px;
 }
 
-.table{
-    padding:0 40px;
+.table {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0 20px;
+}
+
+@media screen and (max-width: 400px) {
+  .table {
+    padding: 0 0;
+  }
 }

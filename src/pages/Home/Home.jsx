@@ -4,6 +4,7 @@ import Navbar from "../../Layout/Navbar/Navbar";
 import { Row, Col, Typography, Card } from "antd";
 
 import "./Home.css";
+import YourComponent from "../../context/AuthContextProvider";
 
 const { Title, Paragraph } = Typography;
 
@@ -11,6 +12,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
+      <YourComponent/>
 
       <Content>
         <div className="home-page">
