@@ -2,6 +2,7 @@
 // GraphContextProvider.js
 import { useContext, useState, useEffect, createContext } from "react";
 import axios from "axios";
+import { BASE_URL } from "../utils/config";
 
 const GraphContext = createContext();
 
@@ -16,7 +17,7 @@ const GraphContextProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/injuryReport"
+        `${BASE_URL}/api/injuryReport`
         );
         const incidents = response.data;
         const counts = categorizeInjuredParts(incidents);

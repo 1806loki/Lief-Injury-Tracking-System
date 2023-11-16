@@ -1,1 +1,1 @@
-export const NAME = import.meta.env.VITE_NAME;
+export const BASE_URL = import.meta.env.VITE_BASE_URL;

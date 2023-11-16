@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../../utils/config";
 
 const Data = () => {
   const [incidents, setIncidents] = useState([]);
@@ -7,7 +8,7 @@ const Data = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const API = "http://localhost:3000/api/injuryReport";
+      const API = `${BASE_URL}api/injuryReport`;
 
       try {
         const response = await axios.get(API);

@@ -3,6 +3,7 @@ import { Button, DatePicker, Form, Input, TimePicker, message } from "antd";
 import "./InjuryReportForm.css";
 import Body from "../Body/Body";
 import axios from "axios";
+import { BASE_URL } from "../../utils/config";
 
 const InjuryFormReport = () => {
   const [injuryParts, setInjuryParts] = useState([]);
@@ -56,7 +57,7 @@ const InjuryFormReport = () => {
         details: inputValues,
       };
       const response = await axios.post(
-        "http://localhost:3000/api/injuryReport",
+        `${BASE_URL}api/injuryReport`,
         data
       );
       message.success("Injury Form submitted successfully!");

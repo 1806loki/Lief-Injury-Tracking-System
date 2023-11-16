@@ -6,6 +6,7 @@ import axios from "axios";
 import "./Report.css";
 import Navbar from "../../Layout/Navbar/Navbar";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import { BASE_URL } from "../../utils/config";
 
 const Report = () => {
   const [reportData, setReportData] = useState([]);
@@ -13,7 +14,7 @@ const Report = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const API = "http://localhost:3000/api/injuryReport";
+        const API = `${BASE_URL}api/injuryReport`;
         const response = await axios.get(API);
         const result = await response.data;
         console.log(result);
@@ -31,7 +32,7 @@ const Report = () => {
   };
   
   const handleDelete = async (key) => {
-    const API = `http://localhost:3000/api/injuryReport/${key}`;
+    const API = `${BASE_URL}api/injuryReport/${key}`;
     
     try {
       await axios.delete(API);
