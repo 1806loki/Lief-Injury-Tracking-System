@@ -1,5 +1,16 @@
+.dashboard {
+  width: 100%;
+  height: auto;
+}
+
 .dashboard-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 520px) {
+  .dashboard .dashboard-container .graphs .div1{
+    height: 10px;
+  }
 }

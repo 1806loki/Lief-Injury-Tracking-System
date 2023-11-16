@@ -3,8 +3,7 @@ import { Table, DatePicker, Input, Button } from "antd";
 import { Popconfirm } from "antd";
 
 import axios from "axios";
-import "./Report.css";
-import Navbar from "../../Layout/Navbar/Navbar";
+import "./ReportList.css";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { BASE_URL } from "../../utils/config";
 
@@ -28,12 +27,11 @@ const Report = () => {
 
   const handleEdit = (key) => {
     console.log(`Editing report with key: ${key}`);
-    
   };
-  
+
   const handleDelete = async (key) => {
     const API = `${BASE_URL}api/injuryReport/${key}`;
-    
+
     try {
       await axios.delete(API);
       console.log("Report Deleted");
@@ -207,7 +205,6 @@ const Report = () => {
 
   return (
     <div className="report">
-      <Navbar />
       <h1>List of Reports</h1>
       <Table
         className="table"

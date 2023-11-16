@@ -5,7 +5,7 @@ import Body from "../Body/Body";
 import axios from "axios";
 import { BASE_URL } from "../../utils/config";
 
-const InjuryFormReport = () => {
+const InjuryReportForm = () => {
   const [injuryParts, setInjuryParts] = useState([]);
   const [inputValues, setInputValues] = useState({});
 
@@ -56,10 +56,7 @@ const InjuryFormReport = () => {
         injuredParts: injuryParts,
         details: inputValues,
       };
-      const response = await axios.post(
-        `${BASE_URL}api/injuryReport`,
-        data
-      );
+      const response = await axios.post(`${BASE_URL}api/injuryReport`, data);
       message.success("Injury Form submitted successfully!");
 
       console.log("Result:", response.data);
@@ -96,11 +93,7 @@ const InjuryFormReport = () => {
             { required: true, message: "Please select date of incident" },
           ]}
         >
-          <DatePicker
-            picker="date"
-            format="YYYY-MM-DD"
-            inputReadOnly // Prevent manual input
-          />
+          <DatePicker picker="date" format="YYYY-MM-DD" inputReadOnly />
         </Form.Item>
         <Form.Item
           label="Time of Incident"
@@ -109,11 +102,7 @@ const InjuryFormReport = () => {
             { required: true, message: "Please select time of incident" },
           ]}
         >
-          <TimePicker
-            picker="time"
-            format="HH:mm A" // Set the desired time format here
-            inputReadOnly // Prevent manual input
-          />
+          <TimePicker picker="time" format="HH:mm A" inputReadOnly />
         </Form.Item>
         <div className="bodyContainer">
           <div className="divLeft">
@@ -141,4 +130,4 @@ const InjuryFormReport = () => {
   );
 };
 
-export default InjuryFormReport;
+export default InjuryReportForm;
