@@ -5,6 +5,7 @@ import { Row, Col, Typography, Card } from "antd";
 
 import "./Home.css";
 import YourComponent from "../../context/AuthContextProvider";
+import { BASE_URL } from "../../utils/config";
 
 const { Title, Paragraph } = Typography;
 
@@ -24,7 +25,7 @@ const Home = () => {
           >
             <Col xs={24} sm={20} md={18} lg={16} xl={32}>
               <Title level={2} style={{ color: "white" }}>
-                Welcome to InjuryLogix 
+                Welcome to InjuryLogix {BASE_URL}
               </Title>
               <Paragraph className="paragraph" style={{ color: "white" }}>
                 Welcome to InjuryLogix, your reliable partner in injury tracking
