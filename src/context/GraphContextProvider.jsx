@@ -17,7 +17,7 @@ const GraphContextProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-        `${BASE_URL}/api/injuryReport`
+        `${BASE_URL}api/injuryReport`
         );
         const incidents = response.data;
         const counts = categorizeInjuredParts(incidents);
