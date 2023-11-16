@@ -10,6 +10,7 @@ import { BASE_URL } from "../../utils/config";
 const { Title, Paragraph } = Typography;
 
 const Home = () => {
+  console.log(BASE_URL)
   return (
     <div>
       <Navbar />
